@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from .locators import BasePageLocators
+from .locators import ProductPageLocators
 
 
 class BasePage():
@@ -52,6 +53,11 @@ class BasePage():
         except TimeoutException:
             return False
         return True
+
+    def go_to_basket_page(self):
+        """Этим методом переходим в корзину"""
+        link = self.browser.find_element(*ProductPageLocators.BASKET_BUTTON)
+        link.click()
 
     def solve_quiz_and_get_code(self):
         """Этим методом решаем пример в окне allert"""
