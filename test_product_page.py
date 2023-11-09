@@ -25,36 +25,37 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         """Тестируем, что пользователь может добавлять товары в корзину"""
         page = ProductPage(browser, link)
         page.open()
         page.should_be_basket_form()
         page.add_item_in_basket()
-        # page.solve_quiz_and_get_code() # Закомментировал, потому что на новой ссылки нет капчи, и её делать не нужно
         page.conditions_when_adding_to_cart()
 
 class TestGuestAddToBasketFromProductPage():
-    def test_guest_can_add_product_to_basket(browser):
+    @pytest.mark.need_review
+    def test_guest_can_add_product_to_basket(self, browser):
         """Тестируем, что гость может добавлять товары в корзину"""
         page = ProductPage(browser, link)
         page.open()
         page.should_be_basket_form()
         page.add_item_in_basket()
-        page.solve_quiz_and_get_code()
+        # page.solve_quiz_and_get_code()
         page.conditions_when_adding_to_cart()
         time.sleep(5)
 
 
     @pytest.mark.skip
-    def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser):
         """Тестируем, что гость не видит сообщение о добавлении товара в корзину"""
         page = ProductPage(browser, link)
         page.open()
         page.add_item_in_basket()
         page.should_not_be_success_message()
 
-    def test_guest_cant_see_success_message(browser):
+    def test_guest_cant_see_success_message(self, browser):
          """Тестируем, что гость не показывается сообщение об успешном добавлении товара пока он не нажимает добавить"""
          page = ProductPage(browser, link)
          page.open()
@@ -62,26 +63,28 @@ class TestGuestAddToBasketFromProductPage():
 
 
     @pytest.mark.xfail
-    def test_message_disappeared_after_adding_product_to_basket(browser):
+    def test_message_disappeared_after_adding_product_to_basket(self, browser):
         """Тестируем, что сообщение о добавления в корзину исчезает после нажатия"""
         page = ProductPage(browser, link)
         page.open()
         page.add_item_in_basket()
         page.is_disappeared()
 
-    def test_guest_should_see_login_link_on_product_page(browser):
+    def test_guest_should_see_login_link_on_product_page(self, browser):
         """Тестируем что гость должен увидеть ссылку на регистрацию на странице"""
         page = ProductPage(browser, link)
         page.open()
         page.should_be_login_link()
 
-    def test_guest_can_go_to_login_page_from_product_page(browser):
+    @pytest.mark.need_review
+    def test_guest_can_go_to_login_page_from_product_page(self, browser):
         """Тестирует что гость может нажать на ссылку регистрацию на этой странице"""
         page = ProductPage(browser, link)
         page.open()
         page.go_to_login_page()
 
-    def  test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    @pytest.mark.need_review
+    def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser):
         """Тестируем что гость переходит в корзину и проверяет что в корзине пусто"""
         page = BasketPage(browser, link)
         page.open()
