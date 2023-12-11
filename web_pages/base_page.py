@@ -45,7 +45,7 @@ class BasePage():
 
         return False
 
-    def is_disappeared(self, how, what, timeout=4):
+    def is_disappeareds(self, how, what, timeout=4):
         """Проверяем, что элемент исчезнет в течении некоторого времени"""
         try:
             WebDriverWait(self.browser, timeout, 1, TimeoutException).until_not(
