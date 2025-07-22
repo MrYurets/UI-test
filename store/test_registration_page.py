@@ -40,7 +40,7 @@ class TestRegistrationPage:
         client_page.click_on_toggle_columns_button()
         allure.attach("Нажата кнопка 'Переключить столбцы'", "Изменение столбцов")
 
-        # Нажимаем на кнопку закрыть попап
+        # Нажимаем на кнопку закрыть попапр
         client_page.click_on_close_popup()
         allure.attach("Закрыт попап", "Попап был закрыт")
 
