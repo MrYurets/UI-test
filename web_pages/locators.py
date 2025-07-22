@@ -1,31 +1,18 @@
 from selenium.webdriver.common.by import By
 
-class MainPageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
-class BasePageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
-    USER_ICON = (By.CSS_SELECTOR, ".icon-user") # Иконка, которая появляется при успешной регистрации
+# Локаторы для страницы авторизации
+class LoginPageLocators:
+    LOGIN = (By.CSS_SELECTOR, "#email")
+    PASSWORD = (By.CSS_SELECTOR, "#password")
+    LOGIN_BUTTON = (By.XPATH, "//button[text()='Войти']")
 
-class ProductPageLocators():
-    BASKET_LINK = (By.CLASS_NAME, "btn-add-to-basket") # Селектор кнопки добавления в корзину
-    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "div.alertinner") # Селектор сообщения о добавлении книги в корзину
-    NAME_BOOK_BASKET = (By.CSS_SELECTOR, ".alertinner strong") # Название добавленной книги
-    PRICE_BOOK_BASKET = (By.CSS_SELECTOR, ".alertinner p strong") # Цена добавленной книги
-    NAME_BOOK_PAGE = (By.CSS_SELECTOR, "div h1") # Название кники на странице
-    PRICE_BOOK_PAGE = (By.CSS_SELECTOR, ".product_main .price_color") # Цена книги на странице
-    BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-group a.btn-default ") # Кнопка добавления в корзину
+# Локаторы для страницы клиента
+class ClientPageLocators:
+    CLIENT_DASHBOARD = (By.CSS_SELECTOR, ".navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-primary.overflow-auto")  # Панель управления
+    DEVICES_BUTTON = (By.CSS_SELECTOR, "a.nav-link[href='https://stage-mgt.antisleep.ru/client-113/device']")  # Кнопка "Устройства"
+    TOGGLE_COLUMNS_BUTTON = (By.CSS_SELECTOR, '[data-toggle="modal"]') # Кнопка "Переключить столбцы"
+    CLOSE_POPUP_BUTTON = (By.XPATH, "(//button[@type='button'][@class='close'][@data-dismiss='modal'])[1]") # Кнопка закрытия поп'апа
+    DOWNLOAD_BUTTON = (By.CSS_SELECTOR, "button.btn.btn-sm.btn-secondary[name='export'][value='csv']") # Кнопка скачивания отчета
+    DOWNLOAD_LINK = (By.XPATH, "//a[contains(text(), 'devices_report')]") # Ссылка скачивания отчета
 
-class BasketPageLocators():
-    BASKET_CONTENT = (By.CSS_SELECTOR, "#content_inner p") # Сообщение о том что корзина пуста
-    BASKET_PRODUCT = (By.CSS_SELECTOR, "div.basket-title div.row") # Товары, которые есть в корзине
-
-class LoginPageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-    LOGINFORM_LINK = (By.CSS_SELECTOR, "#login_form")
-    REGISTERFORM_LINK = (By.CSS_SELECTOR, "#register_form")
-    EMAIL = (By.CSS_SELECTOR, "#id_registration-email")
-    PASSWORD = (By.CSS_SELECTOR, "#id_registration-password1")
-    CONFIRM_PASSWORD = (By.CSS_SELECTOR, "#id_registration-password2")
-    REGISTER_BUTTON = (By.NAME, "registration_submit")
